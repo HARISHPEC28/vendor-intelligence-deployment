@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment variables
+.env
+.env.*
+
+# Node / React
+node_modules/
+dist/
+
+# VS Code
+.vscode/
+
+# Local text files
+New Text Document (2).txt
+back start.txt
