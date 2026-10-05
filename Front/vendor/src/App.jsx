@@ -16,6 +16,7 @@ import VendorManagement from "./components/VendorManagement";
 import Procurement from "./components/Procurement";
 import PurchaseOrders from "./components/PurchaseOrders";
 import VendorPerformance from "./components/VendorPerformance";
+import Analytics from "./components/Analytics";
 import Reports from "./components/Reports";
 import Notifications from "./components/Notifications";
 import Communication from "./components/Communication";
@@ -192,14 +193,10 @@ function App() {
             <ProtectedRoute
               allowedRoles={[
                 "Company Administrator",
-                "Procurement Manager",
-                "Supply Chain Manager",
-                "Finance Officer",
-                "Auditor",
               ]}
             >
               <Layout>
-                  <Dashboard analyticsView />
+                <Analytics />
               </Layout>
             </ProtectedRoute>
           }

@@ -1281,13 +1281,6 @@ def get_vendor_performance(
             .all()
         )
 
-    if current_user.company_id is None:
-        return (
-            db.query(models.VendorPerformance)
-            .order_by(models.VendorPerformance.evaluated_at.desc())
-            .all()
-        )
-
     return (
         db.query(
             models.VendorPerformance
@@ -1369,14 +1362,6 @@ def get_vendor_performance_by_vendor(
             .order_by(
                 models.VendorPerformance.evaluated_at.desc()
             )
-            .all()
-        )
-
-    if current_user.company_id is None:
-        return (
-            db.query(models.VendorPerformance)
-            .filter(models.VendorPerformance.vendor_id == vendor_id)
-            .order_by(models.VendorPerformance.evaluated_at.desc())
             .all()
         )
 

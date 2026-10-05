@@ -16,7 +16,6 @@ function Contracts({ publicMode = false }) {
 
   const [showForm, setShowForm] = useState(false);
   const [editingContract, setEditingContract] = useState(null);
-  const [selectedContract, setSelectedContract] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
@@ -42,14 +41,14 @@ function Contracts({ publicMode = false }) {
   "System Administrator",
   "Procurement Manager",
   "Supply Chain Manager",
-].includes(user?.role) && Boolean(token) && !publicMode;
+].includes(user?.role) && !publicMode;
 
 const canUpdateStatus = [
   "System Administrator",
   "Procurement Manager",
   "Supply Chain Manager",
   "Finance Officer",
-].includes(user?.role) && Boolean(token) && !publicMode;
+].includes(user?.role) && !publicMode;
 
   // ==========================================
   // INITIAL LOAD
@@ -671,14 +670,6 @@ const canUpdateStatus = [
                           </button>
                         )}
 
-                        <button
-                          type="button"
-                          className="edit-button"
-                          onClick={() => setSelectedContract(contract)}
-                        >
-                          View
-                        </button>
-
                         {canUpdateStatus &&
                           contract.status ===
                             "Active" && (
@@ -747,40 +738,6 @@ const canUpdateStatus = [
         )}
 
       </div>
-
-      {selectedContract && (
-        <section className="vendor-form-card contract-detail-panel">
-          <div className="table-header">
-            <h2>{selectedContract.contract_number}</h2>
-            <button
-              type="button"
-              className="secondary-button"
-              onClick={() => setSelectedContract(null)}
-            >
-              Close
-            </button>
-          </div>
-          <p><strong>Vendor:</strong> {getVendorName(selectedContract.vendor_id)}</p>
-          <p><strong>Title:</strong> {selectedContract.title}</p>
-          <p><strong>Status:</strong> {selectedContract.status}</p>
-          <p><strong>Start date:</strong> {selectedContract.start_date || "-"}</p>
-          <p><strong>End date:</strong> {selectedContract.end_date || "-"}</p>
-          <p>
-            <strong>Amount:</strong>{" "}
-            {selectedContract.amount == null
-              ? "-"
-              : `₹${Number(selectedContract.amount).toLocaleString("en-IN")}`}
-          </p>
-          {selectedContract.document_url && (
-            <p>
-              <strong>Document:</strong>{" "}
-              <a href={selectedContract.document_url} target="_blank" rel="noreferrer">
-                Open contract document
-              </a>
-            </p>
-          )}
-        </section>
-      )}
 
     </div>
   );
