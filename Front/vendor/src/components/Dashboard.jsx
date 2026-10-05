@@ -416,7 +416,7 @@ function RadarChart({ values }) {
   );
 }
 
-function ProcurementDashboard({ data }) {
+function ProcurementDashboard({ data, analyticsView = false }) {
   const activePOs = data.purchaseOrders.filter((po) => PROCUREMENT_ACTIVE_STATUSES.includes(po.status));
   const deliveredOrders = data.purchaseOrders.filter((po) => ["Delivered", "Completed"].includes(po.status));
   const cancelledOrders = data.purchaseOrders.filter((po) => po.status === "Cancelled");
@@ -449,8 +449,10 @@ function ProcurementDashboard({ data }) {
         <div className="vi-role-banner-title">
           <span className="vi-role-icon">🛒</span>
           <div>
-            <h1>Procurement Dashboard</h1>
-            <p>Track procurement activities, costs, vendors and delivery performance in real time.</p>
+            <h1>{analyticsView ? "Analytics Dashboard" : "Procurement Dashboard"}</h1>
+            <p>{analyticsView
+              ? "Procurement overview, active purchase orders, vendor performance, cost analysis and delivery status."
+              : "Track procurement activities, costs, vendors and delivery performance in real time."}</p>
           </div>
         </div>
         <div className="vi-live-pill">● Live database data</div>
@@ -689,7 +691,7 @@ function AdminDashboard({ data }) {
   );
 }
 
-function Dashboard() {
+function Dashboard({ analyticsView = false }) {
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user") || "null");
   const role = user?.role || "";
@@ -1041,7 +1043,7 @@ function Dashboard() {
   } else if (role === "System Administrator") {
     dashboardContent = <AdminDashboard data={data} />;
   } else {
-    dashboardContent = <ProcurementDashboard data={data} />;
+    dashboardContent = <ProcurementDashboard data={data} analyticsView={analyticsView} />;
   }
 
   return (
