@@ -4,7 +4,7 @@ import {
   useState,
 } from "react";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://vendor-intelligence-deployment.onrender.com";
 
 function Contracts() {
   const [activeTab, setActiveTab] = useState("contracts");

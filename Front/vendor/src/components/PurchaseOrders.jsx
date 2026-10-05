@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://vendor-intelligence-deployment.onrender.com";
 
 function getReadUrl(path, publicMode) {
   return `${API_URL}${publicMode ? `/public${path}` : path}`;

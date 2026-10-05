@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://vendor-intelligence-deployment.onrender.com";
 
 function getReadUrl(path, publicMode) {
   return `${API_URL}${publicMode ? `/public${path}` : path}`;

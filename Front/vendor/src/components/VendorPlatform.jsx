@@ -7,7 +7,7 @@ import Contracts from "./Contracts";
 import Communication from "./Communication";
 import RequestOrders from "./RequestOrders";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://vendor-intelligence-deployment.onrender.com";
 const staffRoles = [
   "System Administrator",
   "Procurement Manager",
